@@ -2,6 +2,7 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
+const serve = require('./snapdApi')
 
 if (!app.requestSingleInstanceLock()) {
   app.quit()
@@ -24,7 +25,6 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
-  console.log(process.env.ELECTRON_START_URL, path.join(__dirname, './build/index.html'));
   const startUrl = process.env.ELECTRON_START_URL || url.format({
     pathname: path.join(__dirname, './build/index.html'),
     protocol: 'file:',
@@ -48,7 +48,12 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  serve().then(details => {
+    createWindow()
+  })
+  .catch(console.error)
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
