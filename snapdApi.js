@@ -12,8 +12,11 @@ const serve = () => new Promise((resolve, reject) => {
   const token = uuidV4();
 
   const server = http.createServer((request, response) => {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Headers', 'Authorization');
+
     if (request.method === 'OPTIONS') {
-      response.setHeader('Access-Control-Allow-Origin', '*');
+      return response.end();
     }
 
     if (!request.headers.authorization || request.headers.authorization !== token) {
