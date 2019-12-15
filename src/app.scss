@@ -1,0 +1,22 @@
+@import '~tailwindcss/dist/tailwind.min.css';
+
+body {
+    height: 100%;
+
+    #root {
+        height: 100%x;
+
+        #wrapper {
+            height: 100%;
+            display: flex;
+
+            #left {
+                width: 280px;
+            }
+
+            #right {
+                width: 100%;
+            }
+        }
+    }
+}
