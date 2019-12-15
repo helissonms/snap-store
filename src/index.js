@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+const { ipcRenderer } = window.require("electron");
+
+let apiDetails = ipcRenderer.sendSync('api-details');
 
 const renderRoot = (Component) => {
-  ReactDOM.render(<Component />, document.getElementById('root'));
+  ReactDOM.render(<Component apiDetails={apiDetails} />, document.getElementById('root'));
 };
 
 renderRoot(App);

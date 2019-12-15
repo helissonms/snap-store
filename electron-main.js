@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
 const serve = require('./snapdApi')
@@ -19,9 +19,10 @@ function createWindow() {
     height: 720,
     minWidth: 800,
     minHeight: 600,
-    // webPreferences: {
+    webPreferences: {
+      nodeIntegration: true,
     //   preload: path.join(__dirname, 'preload.js')
-    // }
+    }
   })
 
   // and load the index.html of the app.
@@ -50,6 +51,11 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   serve().then(details => {
+
+    ipcMain.on('api-details', event => {
+      event.returnValue = details;
+    })
+
     createWindow()
   })
   .catch(console.error)

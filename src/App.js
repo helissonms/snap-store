@@ -37,7 +37,7 @@ const mock = [
   },
 ];
 
-function App() {
+function App({ apiDetails }) {
   const [list, setList] = useState(mock);
 
   return (
