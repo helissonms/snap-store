@@ -21,7 +21,7 @@
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
-    "electron-dev": "nodemon --watch ./electron-main.js --watch ./electron-wait-react.js --watch ./snapdApi.js -x \"node ./electron-wait-react.js\""
+    "electron-dev": "nodemon --watch electron -x \"node ./electron/wait-react.js\""
   },
   "eslintConfig": {
     "extends": "react-app"

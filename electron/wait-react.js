@@ -1,7 +1,10 @@
 const net = require('net');
 const { spawn } = require('child_process');
+const path = require('path');
 
 const port = process.env.PORT || 3000;
+
+process.env.NODE_ENV = 'development';
 
 process.env.ELECTRON_START_URL = `http://localhost:${port}`;
 
@@ -29,7 +32,10 @@ client.on('connect', () => {
     env: process.env,
   };
 
-  const electronProc = spawn('./node_modules/electron/dist/electron', ['./electron-main.js'], execOptions);
+  const electronBinPath = path.resolve(__dirname, '../node_modules/electron/dist/electron');
+  const electronMainScript = path.resolve(__dirname, './main.js');
+
+  const electronProc = spawn(electronBinPath, [electronMainScript], execOptions);
 
   process.on('SIGINT', () => electronProc.kill('SIGINT'));
 
