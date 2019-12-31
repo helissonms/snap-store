@@ -13,7 +13,7 @@
     "tailwindcss": "^1.1.4",
     "uuid": "^3.3.3"
   },
-  "main": "electron-main.js",
+  "main": "electron/main.js",
   "homepage": "./",
   "scripts": {
     "start": "concurrently \"yarn react-start\" \" yarn electron-dev\"",
