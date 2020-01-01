@@ -14,4 +14,14 @@ export default {
 
     return data.result;
   },
+
+  async findSnap(name) {
+    const { data } = await http.get('/find', {
+      params: {
+        name,
+      },
+    });
+
+    return data.result.length > 0 ? data.result[0] : null;
+  }
 };

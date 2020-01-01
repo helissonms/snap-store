@@ -8,6 +8,7 @@ import {
 import './app.scss';
 import Menu from './components/Menu';
 import List from './components/List';
+import Show from './components/Show';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           <Switch>
             <Route exact path="/list/:section">
               <List />
+            </Route>
+            <Route exact path="/show/:name">
+              <Show />
             </Route>
           </Switch>
         </div>

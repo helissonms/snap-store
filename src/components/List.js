@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import useAPI from '../hooks/useAPI';
 import ListItem from './ListItem';
 import { GridLoader } from 'react-spinners';
@@ -28,7 +28,14 @@ export default () => {
   if (list) {
     return (
       <div className="flex flex-wrap content-start justify-center">
-        {list.map(item => (<ListItem item={item} key={item.id} />))}
+        {
+          list.map(item => (
+              <Link key={item.id} to={`/show/${item.name}`}>
+                <ListItem item={item} />
+              </Link>
+            )
+          )
+        }
       </div>
     );
   }
