@@ -42,7 +42,7 @@ function App({ apiDetails }) {
 
   return (
     <div id="wrapper" className="h-full">
-      <div id="left" className="h-screen bg-white shadow-md shadown-blue">
+      <div id="left" className="h-screen bg-white shadow-md shadown-blue rtl">
         <Menu />
       </div>
       <div id="right" className="h-screen bg-blue-100 p-3 flex flex-wrap content-start justify-center">
