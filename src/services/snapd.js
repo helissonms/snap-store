@@ -6,4 +6,12 @@ export default {
 
     return data.result;
   },
+
+  async getSnaps(params) {
+    const { data } = await http.get('/find', {
+      params,
+    });
+
+    return data.result;
+  },
 };

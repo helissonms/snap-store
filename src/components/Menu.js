@@ -22,6 +22,7 @@ import {
   faDice,
   faPalette
 } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 export default function Menu() {
   const sections = {
@@ -109,14 +110,18 @@ export default function Menu() {
 
   const renderItems = () => {
     return Object.entries(sections)
-      .map(([section, {label, icon}]) => (
+      .map(([section, { label, icon }]) => (
         <li key={section}>
-          <a href="#" className="block py-2 px-3 text-blue-700 border-r-4 ltr text-left hover:font-bold hover:border-blue-400 hover:bg-blue-100">
+          <NavLink
+            to={`/list/${section}`}
+            className="block py-2 px-3 text-blue-700 border-r-4 ltr text-left hover:font-bold hover:border-blue-400 hover:bg-blue-100"
+            activeClassName="font-bold border-blue-700 bg-blue-100"
+          >
             <FontAwesomeIcon icon={icon} className="mr-2" />{label}
-          </a>
+          </NavLink>
         </li>
       )
-    );
+      );
   };
 
   return (

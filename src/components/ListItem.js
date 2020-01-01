@@ -2,7 +2,6 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheckCircle,
-  faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListItem({ item }) {
@@ -22,11 +21,6 @@ export default function ListItem({ item }) {
           {item.publisher.validation === 'verified' &&
             <span className="w-8 flex justify-center items-center">
               <FontAwesomeIcon icon={faCheckCircle} className="text-green-500" />
-            </span>
-          }
-          {item.publisher.validation === 'unproven' &&
-            <span className="w-8 flex justify-center items-center">
-              <FontAwesomeIcon icon={faExclamationCircle} className="text-gray-500" />
             </span>
           }
         </div>
