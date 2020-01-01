@@ -9,14 +9,14 @@ import './app.scss';
 import Menu from './components/Menu';
 import List from './components/List';
 
-function App({ apiDetails }) {
+function App() {
   return (
     <Router>
       <div id="wrapper" className="h-full">
-        <div id="left" className="h-screen bg-white shadow-md shadown-blue rtl">
+        <div id="left" className="h-full bg-white shadow-md shadown-blue rtl">
           <Menu />
         </div>
-        <div id="right" className="h-screen bg-blue-100 p-3">
+        <div id="right" className="h-full bg-blue-100 p-3">
           <Switch>
             <Route exact path="/list/:section">
               <List />
