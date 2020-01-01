@@ -28,7 +28,7 @@ export default () => {
   if (list) {
     return (
       <div className="flex flex-wrap content-start justify-center">
-        {list.map(item => (<ListItem item={item} />))}
+        {list.map(item => (<ListItem item={item} key={item.id} />))}
       </div>
     );
   }

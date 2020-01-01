@@ -6,7 +6,7 @@ import {
 
 export default function ListItem({ item }) {
   return (
-    <div className="w-40 h-auto m-2 p-2 overflow-hidden shadow cursor-pointer bg-white hover:bg-gray-200" key={item.id}>
+    <div className="w-40 h-auto m-2 p-2 overflow-hidden shadow cursor-pointer bg-white hover:bg-gray-200">
       <div className="w-full h-auto flex justify-center">
         {item.icon
           ? <img className="w-20 h-auto block" src={item.icon} alt={item.title} />
