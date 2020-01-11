@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import './app.scss';
 import Menu from './components/Menu';
-import List from './components/List';
-import Show from './components/Show';
+import List from './pages/List';
+import Show from './pages/Show';
 
 function App() {
   return (

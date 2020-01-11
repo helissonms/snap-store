@@ -9,7 +9,7 @@ import { GridLoader } from 'react-spinners';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import useAPI from '../hooks/useAPI';
-import InstallButton from './InstallButton';
+import InstallButton from '../components/InstallButton';
 
 export default () => {
   const { name } = useParams();
