@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import snapd from '../services/snapd';
 
-export default (method, params = {}) => {
+export default (method, params = {}, autoExec = true) => {
   const [data, setData] = useState(null);
   const [isRequesting, setIsRequesting] = useState(false);
   const [error, setError] = useState(null);
@@ -21,7 +21,9 @@ export default (method, params = {}) => {
   };
 
   useEffect(() => {
-    request();
+    if (autoExec) {
+      request();
+    }
   }, []);
 
   return [data, isRequesting, error, request];

@@ -13,7 +13,7 @@ const serve = () => new Promise((resolve, reject) => {
 
   const server = http.createServer((request, response) => {
     response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Headers', 'Authorization');
+    response.setHeader('Access-Control-Allow-Headers', '*');
 
     if (request.method === 'OPTIONS') {
       return response.end();

@@ -9,6 +9,7 @@ import { GridLoader } from 'react-spinners';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import useAPI from '../hooks/useAPI';
+import InstallButton from './InstallButton';
 
 export default () => {
   const { name } = useParams();
@@ -19,7 +20,7 @@ export default () => {
     return item.media.filter(media => media.type === 'screenshot' || media.type === 'video').map((media, index) => {
       if (media.type === 'screenshot') {
         return (
-          <div key={index}>
+          <div key={index} style={{ maxHeight: '560px' }}>
             <img src={media.url} />
           </div>
         );
@@ -78,9 +79,7 @@ export default () => {
             </p>
           </div>
           <div className="w-2/12 flex flex-col justify-center items-center">
-            <button className="w-20 h-10 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-              Install
-            </button>
+            <InstallButton item={item} />
             <p className="text-sm text-gray-700">{item.channel}/{item.version}</p>
           </div>
         </div>

@@ -23,5 +23,24 @@ export default {
     });
 
     return data.result.length > 0 ? data.result[0] : null;
-  }
+  },
+
+  async installSnap(name) {
+    const postData = {
+      action: 'install',
+      snaps: [
+        name,
+      ],
+    };
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const { data } = await http.post('/snaps', postData, config);
+
+    return data;
+  },
 };
