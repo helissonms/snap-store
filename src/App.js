@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams
+  Redirect
 } from "react-router-dom";
 import './app.scss';
 import Menu from './components/Menu';
@@ -25,6 +25,7 @@ function App() {
             <Route exact path="/show/:name">
               <Show />
             </Route>
+            <Redirect exact from="/" to="/list/featured" />
           </Switch>
         </div>
       </div>
