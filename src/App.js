@@ -10,7 +10,7 @@ import Menu from './components/Menu';
 import List from './pages/List';
 import Show from './pages/Show';
 
-function App() {
+export default () => {
   return (
     <Router>
       <div id="wrapper" className="h-full">
@@ -32,5 +32,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
