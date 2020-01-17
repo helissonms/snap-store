@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Root from './Root';
 
 const renderRoot = (Component) => {
   ReactDOM.render(<Component />, document.getElementById('root'));
 };
 
-renderRoot(App);
+renderRoot(Root);
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextRoot = require('./App').default;
+  module.hot.accept('./Root', () => {
+    const NextRoot = require('./Root').default;
     renderRoot(NextRoot);
   });
 }
