@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,13 +8,19 @@ import {
 import { GridLoader } from 'react-spinners';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import useAPI from '../hooks/useAPI';
 import InstallButton from '../components/InstallButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { request } from '../redux/actions/show';
 
 export default () => {
   const { name } = useParams();
+  const dispatch = useDispatch();
 
-  const [item, isRequesting, error, retry] = useAPI('findSnap', name);
+  const { item, isRequesting, error } = useSelector(state => state.show);
+
+  useEffect(() => {
+    dispatch(request(name));
+  }, [name]);
 
   const renderMedia = () => {
     return item.media.filter(media => media.type === 'screenshot' || media.type === 'video').map((media, index) => {

@@ -1,0 +1,11 @@
+export const REQUESTING = 'REQUESTING_SNAP_DETAILS';
+
+export const SUCCESS = 'SUCCESS_SNAP_DETAILS';
+
+export const FAILURE = 'FAILURE_SNAP_DETAILS';
+
+export default {
+  REQUESTING,
+  SUCCESS,
+  FAILURE,
+};
