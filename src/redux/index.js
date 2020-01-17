@@ -5,10 +5,13 @@ import sagas from './sagas';
 
 const sagaMiddleware = createSaga();
 
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__ : compose;
+
 const store = createStore(
   reducers,
   compose(
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware),
+    reduxDevTools()
   )
 );
 

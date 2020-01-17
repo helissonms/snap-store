@@ -34,8 +34,17 @@ function createWindow() {
 
   mainWindow.loadURL(startUrl);
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  if (process.env.NODE_ENV === 'development') {
+    // Install extensions
+    const {default: installExtension, REDUX_DEVTOOLS} = require('electron-devtools-installer')
+
+    installExtension(REDUX_DEVTOOLS)
+      .then(extensionName => console.log(`Added extension: ${extensionName}`))
+      .catch((err) => console.error(`Install extension error: ${err.message}`))
+
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools()
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
