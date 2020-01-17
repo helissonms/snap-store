@@ -1,0 +1,11 @@
+export const REQUESTING = 'REQUESTING_SECTION_LIST';
+
+export const SUCCESS = 'SUCCESS_SECTION_LIST';
+
+export const FAILURE = 'FAILURE_SECTION_LIST';
+
+export default {
+  REQUESTING,
+  SUCCESS,
+  FAILURE,
+};

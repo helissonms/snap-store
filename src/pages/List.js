@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useAPI from '../hooks/useAPI';
 import ListItem from '../components/ListItem';
 import { GridLoader } from 'react-spinners';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { useSelector, useDispatch } from 'react-redux';
+import { request } from '../redux/actions/list';
 
 export default () => {
   const { section } = useParams();
+  const dispatch = useDispatch();
 
-  const [list, isRequesting, error, retry] = useAPI('getSnaps', {
-    section,
-  });
+  const { isRequesting, list, error } = useSelector(state => state.list);
 
   useEffect(() => {
-    retry();
+    dispatch(request(section));
   }, [section]);
 
   if (isRequesting) {

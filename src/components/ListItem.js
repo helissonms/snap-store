@@ -5,10 +5,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListItem({ item }) {
-  const installed = item['install-date'];
-
   return (
-    <div className={`w-40 h-auto m-2 p-2 overflow-hidden shadow cursor-pointer bg-white hover:bg-gray-200 ${installed ? 'border border-gray-500' : ''}`}>
+    <div className={`w-40 h-auto m-2 p-2 overflow-hidden shadow cursor-pointer bg-white hover:bg-gray-200 ${item['install-date'] ? 'border border-gray-500' : ''}`}>
       <div className="w-full h-auto flex justify-center">
         {item.icon
           ? <img className="w-20 h-auto block" src={item.icon} alt={item.title} />
