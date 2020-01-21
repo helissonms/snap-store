@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { request } from '../redux/actions/show';
 import bytesToSize from '../utils/bytesToSize';
 import { CLEAR } from '../redux/types/install';
+import RemoveButton from '../components/RemoveButton';
 
 export default () => {
   const { name } = useParams();
@@ -89,12 +90,8 @@ export default () => {
             </p>
           </div>
           <div className="w-2/12 flex flex-col justify-center items-center">
-            {!item['install-date'] &&
-              <>
-                <InstallButton item={item} />
-                <p className="text-sm text-gray-700">{bytesToSize(item['download-size'])}</p>
-              </>
-            }
+            {item['install-date'] ? <RemoveButton item={item} /> : <InstallButton item={item} /> }
+            <p className="text-sm text-gray-700">{bytesToSize(item['download-size'])}</p>
           </div>
         </div>
         {item.media && <div className="w-full h-auto flex justify-center mt-3">
