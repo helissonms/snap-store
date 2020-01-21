@@ -1,0 +1,14 @@
+export const REQUESTING = 'REQUEST_TRACKING_CHANGE';
+
+export const SUCCESS = 'SUCCESS_TRACK_CHANGE';
+
+export const FAILURE = 'FAILURE_TRACK_CHANGE';
+
+export const CLEAR = 'CLEAR_TRACK_CHANGE';
+
+export default {
+  REQUESTING,
+  SUCCESS,
+  FAILURE,
+  CLEAR,
+};

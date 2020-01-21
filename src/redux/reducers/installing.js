@@ -17,7 +17,7 @@ export default (state = initialState, { type, payload}) => {
     case SUCCESS:
       return {
         ...state,
-        result: payload.result,
+        result: payload,
         isRequesting: false,
       };
     case FAILURE:

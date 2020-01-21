@@ -1,4 +1,4 @@
-import { REQUESTING, SUCCESS, FAILURE, CLEAR } from '../types/remove';
+import { REQUESTING, SUCCESS, FAILURE, CLEAR } from '../types/trackChange';
 
 const initialState = {
   isRequesting: false,
@@ -17,7 +17,7 @@ export default (state = initialState, { type, payload}) => {
     case SUCCESS:
       return {
         ...state,
-        result: payload,
+        result: payload.result,
         isRequesting: false,
       };
     case FAILURE:
