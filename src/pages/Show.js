@@ -11,6 +11,8 @@ import { Carousel } from 'react-responsive-carousel';
 import InstallButton from '../components/InstallButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { request } from '../redux/actions/show';
+import bytesToSize from '../utils/bytesToSize';
+import { CLEAR } from '../redux/types/install';
 
 export default () => {
   const { name } = useParams();
@@ -20,6 +22,8 @@ export default () => {
 
   useEffect(() => {
     dispatch(request(name));
+
+    return () => dispatch({ type: CLEAR });
   }, [name]);
 
   const renderMedia = () => {
@@ -85,8 +89,12 @@ export default () => {
             </p>
           </div>
           <div className="w-2/12 flex flex-col justify-center items-center">
-            <InstallButton item={item} />
-            <p className="text-sm text-gray-700">{item.channel}/{item.version}</p>
+            {!item['install-date'] &&
+              <>
+                <InstallButton item={item} />
+                <p className="text-sm text-gray-700">{bytesToSize(item['download-size'])}</p>
+              </>
+            }
           </div>
         </div>
         {item.media && <div className="w-full h-auto flex justify-center mt-3">

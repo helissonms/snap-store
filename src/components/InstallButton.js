@@ -1,9 +1,14 @@
 import React from 'react';
-import useAPI from '../hooks/useAPI';
-import { CircleLoader, ClipLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
+import { useSelector, useDispatch } from 'react-redux';
+import { request } from '../redux/actions/install';
 
-export default ({ item: { name } }) => {
-  const [result, isRequesting, error, request] = useAPI('installSnap', name, false);
+export default ({ item }) => {
+  const dispatch = useDispatch();
+
+  const { result, isRequesting, error } = useSelector(state => state.installing);
+
+  const install = () => dispatch(request(item));
 
   if (isRequesting) {
     return (
@@ -13,8 +18,12 @@ export default ({ item: { name } }) => {
     );
   }
 
+  if (error) {
+    return <p className="text-red-700">{error}</p>
+  }
+
   return (
-    <button className="w-auto h-10 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={request}>
+    <button className="w-auto h-10 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={install}>
       Install
     </button>
   );

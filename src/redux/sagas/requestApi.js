@@ -14,6 +14,10 @@ export default function* requestApi({ payload }) {
     yield put({ type: SUCCESS, payload: response.data });
 
   } catch (error) {
-    yield put({ type: FAILURE, payload: error });
+    if (error.response) {
+      yield put({ type: FAILURE, payload: error.response.data.result });
+    } else {
+      yield put({ type: FAILURE, payload: error });
+    }
   }
 }
