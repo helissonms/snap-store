@@ -7,7 +7,7 @@ import { CLEAR } from '../redux/types/trackChange';
 export default ({ changeId, item }) => {
   const dispatch = useDispatch();
 
-  const { result, isRequesting, error } = useSelector(state => state.trackChange);
+  const { result, progress, isRequesting, error } = useSelector(state => state.trackChange);
 
   useEffect(() => {
     const intervalId = setInterval(() => dispatch(request(changeId)), 1000);
@@ -15,26 +15,20 @@ export default ({ changeId, item }) => {
     return () => clearInterval(intervalId);
   });
 
-  const currentTask = () => {
-    if (!result) {
-      return '';
-    }
-
-    const doing = result.tasks.find(task => task.status === 'Doing');
-
-    if (doing) {
-      return doing.summary;
-    }
-  }
-
   if (result && result.status === 'Done') {
     dispatch({ type: CLEAR });
     dispatch(refresh(item.name));
   }
 
   if (error) {
-    return <p className="text-xs text-gray-700">{error.message}</p>
+    return <p className="text-xs text-gray-700">{error.message}</p>;
   }
 
-  return <p className="text-xs text-gray-700">{currentTask()}</p>
+  return (
+    <div className="w-full">
+      <div className="w-full bg-gray-200">
+        <div className="bg-blue-500 text-xs leading-none py-1 px-1 text-center text-white" style={{ width: progress + '%' }}>{Math.floor(progress)}%</div>
+      </div>
+    </div>
+  );
 };
